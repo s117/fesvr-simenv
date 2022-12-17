@@ -38,8 +38,7 @@ def prompt_apps_checkpoint(app_names, checkpoints_db_path):
                 print("   %s" % app_chkpt)
             print()
         else:
-            print("No checkpoint available for '%s'.", app)
-            print()
+            print("No checkpoint available for '%s'." % app)
 
 
 @click.command()
