@@ -1,12 +1,9 @@
 import os
 import sys
-from collections import defaultdict
 from typing import List
 
 import yaml
 from fuzzywuzzy import fuzz
-
-from .checkpoints_db import glob_all_checkpoints
 
 
 def get_manifest_path(db_path, record_name):

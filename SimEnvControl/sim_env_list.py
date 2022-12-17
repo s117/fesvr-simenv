@@ -8,8 +8,8 @@ import click
 from natsort import natsorted
 
 from .libsimenv.autocomplete import complete_app_names
-from .libsimenv.manifest_db import glob_all_checkpoints, get_avail_apps_in_db, prompt_app_name_suggestion, \
-    is_app_available
+from .libsimenv.manifest_db import get_avail_apps_in_db, prompt_app_name_suggestion, is_app_available
+from .libsimenv.checkpoints_db import glob_all_checkpoints
 from .libsimenv.utils import fatal
 
 
