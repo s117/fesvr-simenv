@@ -10,7 +10,9 @@ from .app_repo_subrepo import subrepo as entry_subrepo
 
 # To support auto-completion in bash 4.2 shipped with CentOS 7
 from .libsimenv.click_bash42_completion import patch
+
 patch()
+
 
 @click.group()
 def cli():

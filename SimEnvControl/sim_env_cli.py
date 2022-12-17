@@ -9,7 +9,9 @@ from .sim_env_verify import verify as entry_verify
 
 # To support auto-completion in bash 4.2 shipped with CentOS 7
 from .libsimenv.click_bash42_completion import patch
+
 patch()
+
 
 @click.group()
 @click.pass_context
