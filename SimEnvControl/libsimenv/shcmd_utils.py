@@ -14,10 +14,11 @@ def extract_stdin_file_from_shcmd(shcmd):
 
     class nodevisitor(ast.nodevisitor):
         def visitredirect(self, n, input, type, output, heredoc):
-            if type == "<" and len(output.parts) == 0:
-                stdin_files.append(output.word)
-            else:
-                warning("Warning: command [%s] contains non-resolvable stdin source." % shcmd)
+            if type == "<":
+                if len(output.parts) == 0:
+                    stdin_files.append(output.word)
+                else:
+                    warning("Warning: command [%s] contains non-resolvable stdin source %s." % (shcmd, output))
 
     try:
         for tree in trees:
@@ -35,10 +36,11 @@ def add_base_to_stdin_file_in_shcmd(shcmd, root, cwd):
 
     class nodevisitor(ast.nodevisitor):
         def visitredirect(self, n, input, type, output, heredoc):
-            if type == "<" and len(output.parts) == 0:
-                insert_positions.append((output.pos[0], output.word))
-            else:
-                print("Warning: command [%s] contains non-resolvable stdin source." % shcmd)
+            if type == "<":
+                if len(output.parts) == 0:
+                    insert_positions.append((output.pos[0], output.word))
+                else:
+                    warning("Warning: command [%s] contains non-resolvable stdin source %s." % (shcmd, output))
 
     for tree in trees:
         visitor = nodevisitor()
